@@ -111,5 +111,24 @@ namespace WatchPortalFunctionTests
             var result = (BadRequestObjectResult)response.Result;
             Assert.Equal("Please provide a watch model in the query string or in the request body", result.Value);
         }
+
+        [Fact]
+        public void TestGetAllWatchFunctionSuccess()
+        {
+            var request = new DefaultHttpRequest(new DefaultHttpContext());
+
+            var logger = NullLoggerFactory.Instance.CreateLogger("Null Logger");
+
+            GetAllWatchs watchFunc = new GetAllWatchs(new WatchRepository());
+            var response = watchFunc.Run(request, logger);
+            response.Wait();
+
+            // Check that the response is an "Bad" response
+            Assert.IsAssignableFrom<OkObjectResult>(response.Result);
+
+            // Check that the contents of the response are the expected contents
+            var result = (OkObjectResult)response.Result;
+            //Assert.NotEmpty(result.Value.);
+        }
     }
 }

@@ -1,9 +1,13 @@
-﻿using WatchPortalFunction.Model;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using WatchPortalFunction.Model;
 
 namespace WatchPortalFunction.Repository
 {
     public interface IWatchRepository
     {
-        Watch GetWatch(string model);
+        Task<Watch> GetWatch(string model);
+
+        Task<List<Watch>> GetAllWatch();
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using WatchPortalFunction.Model;
 
 namespace WatchPortalFunction.Repository
@@ -53,11 +55,23 @@ namespace WatchPortalFunction.Repository
             };
         }
 
-        public Watch GetWatch(string model)
+        public async Task<List<Watch>> GetAllWatch()
         {
-            Watch watch;
-            _watchs.TryGetValue(model, out watch);
-            return watch;
+            var t = Task.Run(() => { 
+                return _watchs.Values.ToList(); 
+            });
+            return await t;
+        }
+
+        public async Task<Watch> GetWatch(string model)
+        {
+            var t = Task.Run(() =>
+            {
+                Watch watch;
+                _watchs.TryGetValue(model, out watch);
+                return watch;
+            });
+            return await t;
         }
     }
 }

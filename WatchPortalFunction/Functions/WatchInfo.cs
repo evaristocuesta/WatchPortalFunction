@@ -37,7 +37,7 @@ namespace WatchPortalFunction.Functions
             // If the user specified a model id, find the details of the model of watch
             if (model != null)
             {
-                Watch watch = _watchRepository.GetWatch(model);
+                Watch watch = await _watchRepository.GetWatch(model);
 
                 if (watch != null)
                     return new OkObjectResult(watch);
