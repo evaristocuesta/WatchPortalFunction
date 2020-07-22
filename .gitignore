@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/WatchPortalFunction
+/WatchPortalFunction/Properties/PublishProfiles
+/WatchPortalFunction/Properties/serviceDependencies.ecg-watchfunctions - Zip Deploy.json
+/WatchPortalFunctionTests/bin/Debug/netcoreapp3.1
+/WatchPortalFunctionTests/obj
